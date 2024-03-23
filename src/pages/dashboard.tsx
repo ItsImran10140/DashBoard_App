@@ -5,6 +5,10 @@ import { FaRegBell } from "react-icons/fa";
 import userImg from "../assets/userpic.png";
 import { HiTrendingDown, HiTrendingUp } from "react-icons/hi";
 
+import data from "../assets/data.json";
+import { BarChart } from "../components/Charts";
+import { BiMaleFemale } from "react-icons/bi";
+
 const Dashboard = () => {
   return (
     <div className="adminContainer">
@@ -45,7 +49,45 @@ const Dashboard = () => {
           />
         </section>
 
-        <section className="graphcontainer"></section>
+        <section className="graphcontainer">
+          <div className="revenue-chart">
+            <h2>Revenue & Transacion</h2>
+            {/* Graph here */}
+            <BarChart
+              data_1={[300, 144, 433, 655, 237, 755, 190]}
+              data_2={[200, 444, 343, 556, 778, 455, 990]}
+              title_1="Revenue"
+              title_2="Transaction"
+              bgColor_1="rgb(0, 115, 255)"
+              bgColor_2="rgba(53, 162,235,0.8)"
+            />
+          </div>
+          <div className="dashboard-categories">
+            <h2>Inventory</h2>
+            <div>
+              {data.categories.map((i) => (
+                <CategoryItem
+                  key={i.heading}
+                  heading={i.heading}
+                  value={i.value}
+                  color={`hsl(${i.value * 4}, ${i.value}%, 50%)`}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="transaction-container">
+          <div className="gender-chart">
+            <h2>Gender Ratio</h2>
+            {/* Chart */}
+            <p>
+              <BiMaleFemale />
+            </p>
+          </div>
+
+          {/* Table */}
+        </section>
       </main>
     </div>
   );
@@ -99,6 +141,22 @@ const WidgetItem = ({
       </span>
     </div>
   </article>
+);
+
+interface CategoryItemProps {
+  color: string;
+  value: number;
+  heading: string;
+}
+
+const CategoryItem = ({ color, value, heading }: CategoryItemProps) => (
+  <div className="category-item">
+    <h5>{heading}</h5>
+    <div>
+      <div style={{ backgroundColor: color, width: `${value}%` }}></div>
+    </div>
+    <span>{value}%</span>
+  </div>
 );
 
 export default Dashboard;
