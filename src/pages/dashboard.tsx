@@ -9,6 +9,7 @@ import data from "../assets/data.json";
 import { BarChart } from "../components/Charts";
 import { BiMaleFemale } from "react-icons/bi";
 import { DoughnutChart } from "../components/Charts";
+import Table from "../components/DashboardTable";
 
 const Dashboard = () => {
   return (
@@ -92,7 +93,7 @@ const Dashboard = () => {
             </p>
           </div>
 
-          {/* Table */}
+          <Table data={data.transaction} />
         </section>
       </main>
     </div>
