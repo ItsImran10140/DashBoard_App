@@ -1,4 +1,9 @@
-import { Column, TableOptions, useTable } from "react-table";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import {
+  AiOutlineSortAscending,
+  AiOutlineSortDescending,
+} from "react-icons/ai";
+import { Column, TableOptions, useSortBy, useTable } from "react-table";
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 function TableHOC<T extends Object>(
@@ -14,7 +19,7 @@ function TableHOC<T extends Object>(
     };
 
     const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-      useTable(options);
+      useTable(options, useSortBy);
 
     return (
       <div className={containerClassname}>
@@ -24,9 +29,19 @@ function TableHOC<T extends Object>(
           <thead>
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => (
-                  <th {...column.getHeaderProps()}>
+                {headerGroup.headers.map((column: any) => (
+                  <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                     {column.render("Header")}
+                    {column.isSorted && (
+                      <span>
+                        {" "}
+                        {column.isSortedDesc ? (
+                          <AiOutlineSortDescending />
+                        ) : (
+                          <AiOutlineSortAscending />
+                        )}
+                      </span>
+                    )}
                   </th>
                 ))}
               </tr>
