@@ -4,6 +4,9 @@ import Loader from "./components/Loader";
 import BarChart from "./pages/charts/BarCharts";
 import LineChart from "./pages/charts/LineCharts";
 import PieChart from "./pages/charts/PieCharts";
+import StopWatch from "./pages/apps/StopWatch";
+import Coupon from "./pages/apps/Coupon";
+import Toss from "./pages/apps/Toss";
 
 const Dashboard = lazy(() => import("./pages/dashboard"));
 const Products = lazy(() => import("./pages/products"));
@@ -33,6 +36,9 @@ const App = () => {
           <Route path="/admin/chart/Pie" element={<PieChart />} />
 
           {/* Apps*/}
+          <Route path="/admin/app/stopwatch" element={<StopWatch />} />
+          <Route path="/admin/app/coupon" element={<Coupon />} />
+          <Route path="/admin/app/toss" element={<Toss />} />
 
           {/* Management */}
           <Route path="/admin/product/new" element={<NewProduct />} />
