@@ -1,6 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import Loader from "./components/Loader";
+import BarChart from "./pages/charts/BarCharts";
+import LineChart from "./pages/charts/LineCharts";
+import PieChart from "./pages/charts/PieCharts";
 
 const Dashboard = lazy(() => import("./pages/dashboard"));
 const Products = lazy(() => import("./pages/products"));
@@ -25,6 +28,9 @@ const App = () => {
           <Route path="/admin/transaction" element={<Transaction />} />
 
           {/* Charts */}
+          <Route path="/admin/chart/bar" element={<BarChart />} />
+          <Route path="/admin/chart/line" element={<LineChart />} />
+          <Route path="/admin/chart/Pie" element={<PieChart />} />
 
           {/* Apps*/}
 
