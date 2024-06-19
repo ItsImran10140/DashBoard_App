@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { ReactElement, useCallback, useState } from "react";
 import AdminSideBar from "../components/AdminSideBar";
 import { Column } from "react-table";
@@ -102,10 +103,12 @@ const Customer = () => {
   );
 
   return (
-    <div className="adminContainer">
-      <AdminSideBar />
-      <main>{Tabel()}</main>
-    </div>
+    <>
+      <div className="adminContainer">
+        <AdminSideBar />
+        <main>{Tabel()}</main>
+      </div>
+    </>
   );
 };
 

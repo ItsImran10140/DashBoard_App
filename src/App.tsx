@@ -28,7 +28,34 @@ const App = () => {
         <Routes>
           <Route
             path="/"
-            element={<Link to={"/admin/dashboard"}>GOT TO DASHBOARD</Link>}
+            element={
+              <div
+                style={{
+                  // border: "2px solid black",
+                  display: "flex",
+                  justifyContent: "center",
+                  height: "95vh",
+                  alignItems: "center",
+                }}
+              >
+                <Link to={"/admin/dashboard"}>
+                  {" "}
+                  <h1 style={{ color: "black", fontSize: "100px" }}>
+                    GO TO DASHBOARD
+                  </h1>{" "}
+                  <p
+                    style={{
+                      color: "black",
+                      display: "flex",
+                      justifyContent: "center",
+                      fontSize: "20px",
+                    }}
+                  >
+                    This is just a Frontend part of a Dashboard
+                  </p>
+                </Link>
+              </div>
+            }
           />
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/admin/products" element={<Products />} />
