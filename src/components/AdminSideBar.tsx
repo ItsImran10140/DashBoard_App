@@ -58,7 +58,7 @@ const AdminSideBar = () => {
             : {}
         }
       >
-        <h2>Logo</h2>
+        <h2>InsightHub</h2>
         <DivOne location={location} />
         <DivTwo location={location} />
         <DivThree location={location} />
